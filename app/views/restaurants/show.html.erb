@@ -1,0 +1,47 @@
+<div class="container">
+  <table class="table table-bordered thead-dark">
+      <thead>
+          <tr>
+              <th colspan="2" scope="col"><%= @restaurant.name %></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <th scope="row">Address</td>
+              <td><%= @restaurant.address %></td>
+          </tr>
+          <tr>
+              <th scope="row">Phone Number</td>
+              <td><%= @restaurant.phone_number %></td>
+          </tr>
+          <tr>
+              <th scope="row">Category</td>
+              <td><%= @restaurant.category %></td>
+          </tr>
+          <% if @restaurant.reviews != [] %>
+            <tr>
+              <th scope="row">Average rating</td>
+              <td><%= @average_rating / @restaurant.reviews.count %></td>
+            </tr>
+          <% end %>
+      </tbody>
+  </table>
+  <table class="table table-bordered table-striped">
+      <thead>
+          <tr>
+              <th scope="col">Reviews for <%= @restaurant.name %></th>
+          </tr>
+      </thead>
+      <tbody>
+              <% @restaurant.reviews.each do |review| %>
+              <tr>
+                <td colspan="2" scope="col"><%= review.content %>
+                </td></tr>
+              <% end %>
+      </tbody>
+    </table>
+  <div class="d-flex justify-content-around">
+    <%= link_to 'Back to list', restaurants_path, class: "btn btn-primary" %>
+    <%= link_to 'Add review', new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+  </div>
+</div>
