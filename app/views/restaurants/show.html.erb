@@ -21,7 +21,7 @@
           <% if @restaurant.reviews != [] %>
             <tr>
               <th scope="row">Average rating</td>
-              <td><%= @average_rating / @restaurant.reviews.count %></td>
+              <td><%= @average_rating.fdiv(@restaurant.reviews.count) %></td>
             </tr>
           <% end %>
       </tbody>

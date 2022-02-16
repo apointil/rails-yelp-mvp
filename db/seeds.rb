@@ -12,3 +12,8 @@ Restaurant.destroy_all
   restaurant = Restaurant.create({ name: Faker::Restaurant.name, address: Faker::Address.street_address, phone_number: Faker::PhoneNumber.cell_phone_in_e164, category: %w[chinese italian japanese french belgian].sample })
   puts restaurant.name
 end
+
+50.times do
+  review = Review.create({ content: Faker::Restaurant.review, rating: rand(0..5), restaurant_id: rand(22..32) })
+  puts review.content
+end
